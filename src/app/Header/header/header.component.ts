@@ -1,18 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Item } from 'src/app/Model/items.model';
 import { DateService } from 'src/app/Services/date.service';
+import { HandleItems } from 'src/app/Services/handleItems.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  providers: [DateService],
+  providers: [DateService, HandleItems],
 })
 export class HeaderComponent implements OnInit {
-  currentDate: any;
-  constructor(private dateService: DateService) {}
+  @Input() currentDate: any;
+  @Input() todoItems: Item[] = [];
+  @Input() taskInput: string = '';
+  constructor(
+    private dateService: DateService,
+    private handleItems: HandleItems
+  ) {}
   ngOnInit() {
     this.currentDate = this.dateService.date;
+    this.todoItems = this.handleItems.item;
   }
 
-  addTask(event: any) {}
+  taskAdded() {
+    // console.log(event.target.value);
+    // this.taskInput = event.target.value;
+    this.todoItems.push(new Item(this.taskInput));
+    console.log(this.todoItems);
+    this.taskInput = '';
+  }
 }

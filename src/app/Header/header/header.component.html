@@ -1,7 +1,7 @@
 <div class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a href="#" class="navbar-brand">Rolando's Todo</a>
+      <a href="#" class="navbar-brand">Today's Todo</a>
       <span class="navbar-brand" style="padding-left: 150px"
         >{{ currentDate }}
       </span>
@@ -9,7 +9,7 @@
   </div>
   <div class="nav navbar navbar-center" style="padding-left: 200px">
     <span> Enter a task </span>
-    <input type="text" placeholder="Clean Kitchen" id="" />
-    <button class="btn btn-primary" (click)="addTask($event)">Add Task</button>
+    <input type="text" placeholder="Clean Kitchen" [(ngModel)]="taskInput" />
+    <button class="btn btn-primary" (click)="taskAdded()">Add Task</button>
   </div>
 </div>
