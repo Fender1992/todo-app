@@ -11,23 +11,18 @@ import { HandleItems } from 'src/app/Services/handleItems.service';
   providers: [DateService, HandleItems],
 })
 export class HeaderComponent implements OnInit {
-  @Input() currentDate: any;
-  @Input() todoItems: Item[] = [];
-  @Input() taskInput: string = '';
+  currentDate: any;
+  @Output() taskAdded = new EventEmitter<Item>();
+  taskInput: string = '';
   constructor(
     private dateService: DateService,
     private handleItems: HandleItems
   ) {}
   ngOnInit() {
     this.currentDate = this.dateService.date;
-    this.todoItems = this.handleItems.item;
   }
-
-  taskAdded() {
-    // console.log(event.target.value);
-    // this.taskInput = event.target.value;
-    this.todoItems.push(new Item(this.taskInput));
-    console.log(this.todoItems);
+  onAddTask() {
+    this.taskAdded.emit(new Item(this.taskInput));
     this.taskInput = '';
   }
 }

@@ -2,12 +2,28 @@
   <app-header></app-header>
   <hr />
 </div>
-<div class="row">
-  <div class="col-xs-12">
-    <app-todo-list
-      *ngFor="let item of todoItems"
-      [todoItems]="todoItems"
-      (taskAdded)="onAddTask($event)"
-    ></app-todo-list>
+
+<div class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="#" class="navbar-brand">Today's Todo</a>
+      <span class="navbar-brand" style="padding-left: 150px">{{
+        currentDate
+      }}</span>
+    </div>
+  </div>
+  <div class="nav navbar navbar-center" style="padding-left: 200px">
+    <span> Enter a task </span>
+    <input type="text" placeholder="Clean Kitchen" [(ngModel)]="taskInput" />
+    <button class="btn btn-primary" (click)="onAddTask()">Add Task</button>
+  </div>
+</div>
+
+<div class="container">
+  <hr />
+  <div class="row">
+    <div class="col-xs-12">
+      <app-todo-list [todoItems]="todoItems"></app-todo-list>
+    </div>
   </div>
 </div>
