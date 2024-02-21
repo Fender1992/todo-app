@@ -4,7 +4,7 @@
       <input
         type="checkbox"
         [(ngModel)]="i.completed"
-        (change)="onClickCheckbox(i)"
+        (change)="onDeleteTask(i.id)"
       />
       <span [ngClass]="{ 'completed-task': i.completed }"></span>
       {{ i.task }}

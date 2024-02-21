@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
     this.currentDate = this.dateService.date;
   }
   onAddTask() {
-    this.taskAdded.emit(new Item(this.taskInput, false));
+    this.taskAdded.emit(new Item(this.taskInput, false, 1));
     this.taskInput = '';
   }
 }

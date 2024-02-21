@@ -14,6 +14,9 @@ export class AppComponent {
   currentDate: any;
   todoItems: Item[] = [];
   taskInput: string = '';
+  completed: boolean = false;
+  id = Math.floor(Math.random() * 1000);
+
   constructor(
     private dateService: DateService,
     private handleItems: HandleItems,
@@ -31,11 +34,15 @@ export class AppComponent {
     if (this.taskInput.trim() === '') {
       return;
     }
-    const newItem = new Item(this.taskInput, false);
+    const newItem = new Item(this.taskInput, false, this.id);
     this.todoItems.push(newItem);
     this.databaseService.postTasks(newItem);
     // console.log(this.todoItems);
     this.taskInput = '';
-    console.log(this.databaseService.todoItems);
+  }
+  onDeleteTask(itemId: number) {
+    this.databaseService.deleteTasks(itemId).subscribe(() => {
+      this.todoItems = this.todoItems.filter((task) => task.id !== itemId);
+    });
   }
 }

@@ -23,7 +23,10 @@
   <hr />
   <div class="row">
     <div class="col-xs-12">
-      <app-todo-list [todoItems]="todoItems"></app-todo-list>
+      <app-todo-list
+        [todo-component-list]="todoItems"
+        (deleteTask)="onDeleteTask($event)"
+      ></app-todo-list>
     </div>
   </div>
 </div>

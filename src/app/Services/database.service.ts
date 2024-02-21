@@ -36,4 +36,9 @@ export class DatabaseService {
         })
       );
   }
+  deleteTasks(itemId: number) {
+    return this.http.delete(
+      'https://todo-app-30b79-default-rtdb.firebaseio.com/tasks.json/task'
+    );
+  }
 }

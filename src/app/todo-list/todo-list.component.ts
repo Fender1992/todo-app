@@ -9,15 +9,14 @@ import { Item } from '../Model/items.model';
   providers: [HandleItems],
 })
 export class TodoListComponent implements OnInit {
-  @Output() taskAdded = new EventEmitter<Item>();
-  @Input() todoItems: Item[] = [];
-  @Input() taskInput: string = '';
+  @Input('todo-component-list') todoItems: Item[] = [];
   ngOnInit() {}
+  @Input('todo-list-completed') completed: boolean = false;
+  @Output() deleteTask = new EventEmitter<number>();
 
   constructor(private handleItems: HandleItems) {}
 
-  onClickCheckbox(event: Item) {
-    event.completed = !event.completed;
-    console.log(event);
+  onDeleteTask(itemId: number) {
+    this.deleteTask.emit(itemId);
   }
 }
