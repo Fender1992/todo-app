@@ -14,7 +14,10 @@ export class TodoListComponent implements OnInit {
   @Input() taskInput: string = '';
   ngOnInit() {}
 
-  constructor(private handleItems: HandleItems) {
-    this.todoItems = this.handleItems.item;
+  constructor(private handleItems: HandleItems) {}
+
+  onClickCheckbox(event: Item) {
+    event.completed = !event.completed;
+    console.log(event);
   }
 }

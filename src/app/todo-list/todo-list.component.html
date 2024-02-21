@@ -1,3 +1,13 @@
-<ul class="list-group list-group-light" *ngFor="let i of todoItems">
-  <li class="list-group-item">{{ i.task }} <input type="checkbox" /></li>
+<ul class="list-group list-group-light">
+  <li class="list-group-item" *ngFor="let i of todoItems">
+    <label class="checkbox-label">
+      <input
+        type="checkbox"
+        [(ngModel)]="i.completed"
+        (change)="onClickCheckbox(i)"
+      />
+      <span [ngClass]="{ 'completed-task': i.completed }"></span>
+      {{ i.task }}
+    </label>
+  </li>
 </ul>

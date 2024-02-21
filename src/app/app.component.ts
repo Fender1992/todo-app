@@ -31,7 +31,7 @@ export class AppComponent {
     if (this.taskInput.trim() === '') {
       return;
     }
-    const newItem = new Item(this.taskInput);
+    const newItem = new Item(this.taskInput, false);
     this.todoItems.push(newItem);
     this.databaseService.postTasks(newItem);
     // console.log(this.todoItems);

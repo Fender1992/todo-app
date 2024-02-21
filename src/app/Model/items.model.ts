@@ -1,9 +1,9 @@
 export class Item {
   task: string;
-  // public completed: boolean;
+  completed: boolean;
 
-  constructor(task: string, id: number) {
+  constructor(task: string, completed: boolean) {
     this.task = task;
-    // this.completed = completed;
+    this.completed = completed;
   }
 }

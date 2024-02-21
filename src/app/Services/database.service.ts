@@ -28,9 +28,8 @@ export class DatabaseService {
           const tasksArray: Item[] = [];
           for (const key in responseData) {
             if (responseData.hasOwnProperty(key)) {
-              tasksArray.push({ task: responseData[key] }).toLocaleString();
+              tasksArray.push(responseData[key]);
               this.todoItems = tasksArray;
-              console.log(this.todoItems);
             }
           }
           return this.todoItems;
