@@ -15,7 +15,6 @@ export class AppComponent {
   todoItems: Item[] = [];
   taskInput: string = '';
   completed: boolean = false;
-  id = Math.floor(Math.random() * 1000);
 
   constructor(
     private dateService: DateService,
@@ -34,15 +33,20 @@ export class AppComponent {
     if (this.taskInput.trim() === '') {
       return;
     }
-    const newItem = new Item(this.taskInput, false, this.id);
-    this.todoItems.push(newItem);
-    this.databaseService.postTasks(newItem);
+    const newItem = new Item(this.taskInput, false, Date());
+    this.databaseService.postTasks(newItem).subscribe((response) => {
+      newItem.firebaseKey = response.name;
+      this.todoItems.push(newItem);
+    });
+    // this.databaseService.postTasks(newItem);
     // console.log(this.todoItems);
     this.taskInput = '';
   }
-  onDeleteTask(itemId: number) {
-    this.databaseService.deleteTasks(itemId).subscribe(() => {
-      this.todoItems = this.todoItems.filter((task) => task.id !== itemId);
+  onDeleteTask(firebaseKey: string) {
+    this.databaseService.deleteTasks(firebaseKey!).subscribe(() => {
+      this.todoItems = this.todoItems.filter(
+        (task) => task.firebaseKey !== firebaseKey
+      );
     });
   }
 }

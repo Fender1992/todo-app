@@ -9,13 +9,11 @@ export class DatabaseService {
   @Input() todoItems: Item[] = [];
   constructor(private http: HttpClient) {}
 
-  postTasks(task: Item) {
-    this.http
-      .post<Item>(
-        'https://todo-app-30b79-default-rtdb.firebaseio.com/tasks.json',
-        task
-      )
-      .subscribe();
+  postTasks(task: Item): Observable<{ name: string }> {
+    return this.http.post<{ name: string }>(
+      'https://todo-app-30b79-default-rtdb.firebaseio.com/tasks.json',
+      task
+    );
   }
 
   getTasks(): Observable<Item[]> {
@@ -28,7 +26,8 @@ export class DatabaseService {
           const tasksArray: Item[] = [];
           for (const key in responseData) {
             if (responseData.hasOwnProperty(key)) {
-              tasksArray.push(responseData[key]);
+              const item = { ...responseData[key], firebaseKey: key };
+              tasksArray.push(item);
               this.todoItems = tasksArray;
             }
           }
@@ -36,9 +35,9 @@ export class DatabaseService {
         })
       );
   }
-  deleteTasks(itemId: number) {
+  deleteTasks(firebaseKey: string) {
     return this.http.delete(
-      'https://todo-app-30b79-default-rtdb.firebaseio.com/tasks.json/task'
+      `https://todo-app-30b79-default-rtdb.firebaseio.com/tasks/${firebaseKey}.json`
     );
   }
 }

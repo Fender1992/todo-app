@@ -4,10 +4,10 @@
       <input
         type="checkbox"
         [(ngModel)]="i.completed"
-        (change)="onDeleteTask(i.id)"
+        (change)="onDeleteTask(i.firebaseKey!)"
       />
       <span [ngClass]="{ 'completed-task': i.completed }"></span>
-      {{ i.task }}
+      {{ i.task.toUpperCase() }}
     </label>
   </li>
 </ul>

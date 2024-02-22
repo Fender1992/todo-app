@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Item } from 'src/app/Model/items.model';
+import { CalenderService } from 'src/app/Services/calender.service';
 import { DateService } from 'src/app/Services/date.service';
 import { HandleItems } from 'src/app/Services/handleItems.service';
 
@@ -14,6 +15,7 @@ export class HeaderComponent implements OnInit {
   currentDate: any;
   @Output() taskAdded = new EventEmitter<Item>();
   taskInput: string = '';
+  @Input('previosDays') daysArray: CalenderService[] = [];
   constructor(
     private dateService: DateService,
     private handleItems: HandleItems
@@ -22,7 +24,7 @@ export class HeaderComponent implements OnInit {
     this.currentDate = this.dateService.date;
   }
   onAddTask() {
-    this.taskAdded.emit(new Item(this.taskInput, false, 1));
+    this.taskAdded.emit(new Item(this.taskInput, false, Date()));
     this.taskInput = '';
   }
 }

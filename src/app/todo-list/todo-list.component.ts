@@ -12,11 +12,11 @@ export class TodoListComponent implements OnInit {
   @Input('todo-component-list') todoItems: Item[] = [];
   ngOnInit() {}
   @Input('todo-list-completed') completed: boolean = false;
-  @Output() deleteTask = new EventEmitter<number>();
+  @Output() deleteTask = new EventEmitter<string>();
 
   constructor(private handleItems: HandleItems) {}
 
-  onDeleteTask(itemId: number) {
-    this.deleteTask.emit(itemId);
+  onDeleteTask(firebaseKey: string) {
+    this.deleteTask.emit(firebaseKey);
   }
 }
