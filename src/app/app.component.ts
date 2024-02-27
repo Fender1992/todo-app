@@ -49,4 +49,15 @@ export class AppComponent {
       );
     });
   }
+
+  allTasksCompleted(): boolean {
+    return (
+      this.todoItems.length > 0 &&
+      this.todoItems.every((task) => task.completed)
+    );
+  }
+
+  tasksRemaining(): boolean {
+    return this.todoItems.some((task) => !task.completed);
+  }
 }

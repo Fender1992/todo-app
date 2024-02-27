@@ -1,0 +1,110 @@
+:root {
+  /* Updated color scheme for better contrast */
+  --primary-color: #7f7fd5;
+  --secondary-color: #e2e2e2; /* Lighter shade for inputs and backgrounds */
+  --background-color: #f0f0f0;
+  --text-color: #333;
+  --btn-bg-color: #ff6b6b; /* Vibrant color for the button */
+  --btn-hover-color: #ff8787; /* Lighter shade for hover state */
+  --input-focus-color: #fbd786; /* Gold shade for input focus */
+  --background-gradient-start: #2980b9; /* Darker blue */
+  --background-gradient-end: #ffffff; /* White to blend with the page */
+}
+
+body {
+  background: linear-gradient(
+    120deg,
+    var(--background-gradient-start),
+    var(--background-gradient-end)
+  );
+  background-attachment: fixed;
+  animation: backgroundAnimation 30s ease infinite;
+}
+
+.container {
+  /* Adjustments for better readability and appearance */
+  backdrop-filter: blur(5px);
+}
+
+.btn-add-task {
+  background-color: var(--btn-bg-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-add-task {
+  background-color: var(
+    --btn-bg-color
+  ); /* Ensure this has a high contrast with the text color */
+  color: white; /* This should contrast well with the background-color */
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px; /* Adjust if necessary to make the plus sign more visible */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Added for better visibility */
+}
+
+.btn-add-task:hover {
+  transform: translateY(-50%) scale(1.1) rotate(45deg); /* Adds rotation */
+  background-color: var(--btn-hover-color);
+}
+
+/* Additional styling for input to complement the button */
+input[type="text"]:focus {
+  border-color: var(--input-focus-color);
+  box-shadow: 0 0 10px var(--input-focus-color); /* Increased glow effect */
+}
+
+input[type="text"]:focus {
+  border-color: var(--input-focus-color);
+  box-shadow: 0 0 8px var(--input-focus-color); /* Subtle glow effect */
+}
+
+/* Enhanced animations for background */
+@keyframes backgroundAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.btn-add-task {
+  background-color: var(--btn-bg-color); /* Adjust this color to stand out */
+  color: white;
+  /* Other styles */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for better visibility */
+}
+
+.btn-add-task:hover {
+  background-color: var(
+    --btn-hover-color
+  ); /* Ensure this color contrasts well with the background */
+  /* Other hover styles */
+}
+
+.task-status-message {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+  color: #fff;
+}
+
+.task-status-message:first-child {
+  background-color: #4caf50; /* Success message styling */
+}
+
+.task-status-message:last-child {
+  background-color: #f44336; /* Reminder message styling */
+}
