@@ -80,7 +80,7 @@ input[type="text"]:focus {
 }
 .btn-add-task {
   background-color: var(--btn-bg-color); /* Adjust this color to stand out */
-  color: white;
+  color: rgb(0, 0, 0);
   /* Other styles */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for better visibility */
 }
