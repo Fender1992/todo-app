@@ -1,36 +1,56 @@
 <div class="container mt-5">
-  <div class="row justify-content-center">
-    <h2>Sign up to Join our Community</h2>
-    <div class="col-12 col-md-8 col-lg-6">
-      <form (ngSubmit)="onLogin(f)" class="needs-validation" #f="ngForm">
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            placeholder="Enter your email"
-            name="email"
-            ngModel
-            required
-          />
-          <!-- <div class="invalid-feedback">Please enter a valid email.</div> -->
-        </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            placeholder="Enter your password"
-            name="password"
-            ngModel
-            required
-          />
-          <!-- <div class="invalid-feedback">Please enter your password.</div> -->
-        </div>
-        <button type="submit" class="btn btn-primary">Sign In</button>
-      </form>
+  <div class="row justify-content-center align-items-center">
+    <!-- Sign Up Form Container -->
+    <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+      <div class="p-3 border rounded">
+        <h2>Sign up to Join our Community</h2>
+        <form (ngSubmit)="onLogin(f)" class="needs-validation" #f="ngForm">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Enter your email"
+              name="email"
+              ngModel
+              required
+            />
+            <!-- Optional: invalid feedback message -->
+            <!-- <div class="invalid-feedback">Please enter a valid email.</div> -->
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Enter your password"
+              name="password"
+              ngModel
+              required
+            />
+            <!-- Optional: invalid feedback message -->
+            <!-- <div class="invalid-feedback">Please enter your password.</div> -->
+          </div>
+          <button type="submit" class="btn btn-primary">Sign In</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Images Container -->
+    <div class="col-12 col-lg-6">
+      <!-- Image placeholders - replace with actual image paths -->
+      <img
+        src="https://source.unsplash.com/random/400x300?chores"
+        alt="People doing chores"
+        class="img-fluid mb-3"
+      />
+      <img
+        src="https://source.unsplash.com/random/400x300?chores,work"
+        alt="More people doing chores"
+        class="img-fluid"
+      />
     </div>
   </div>
 </div>
