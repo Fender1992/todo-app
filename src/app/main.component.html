@@ -1,0 +1,31 @@
+<div class="container">
+  <header class="app-header">
+    <h1>Today's Todo</h1>
+    <p class="current-date">{{ currentDate }}</p>
+  </header>
+
+  <nav class="navbar">
+    <div class="task-entry">
+      <input
+        type="text"
+        id="taskInput"
+        placeholder="e.g., Clean Kitchen"
+        [(ngModel)]="taskInput"
+      />
+      <button class="btn-add-task" (click)="onAddTask()">+</button>
+    </div>
+  </nav>
+
+  <main class="todo-list-container">
+    <app-todo-list
+      [todo-component-list]="todoItems"
+      (deleteTask)="onDeleteTask($event)"
+    ></app-todo-list>
+  </main>
+  <div class="task-status-message" *ngIf="allTasksCompleted()">
+    🎉 All tasks are completed! Great job!
+  </div>
+  <div class="task-status-message" *ngIf="tasksRemaining()">
+    ⏳ You have tasks remaining. Keep going!
+  </div>
+</div>
