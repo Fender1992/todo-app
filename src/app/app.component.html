@@ -1,1 +1,19 @@
-<app-sign-in></app-sign-in>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <ul class="nav nav-tabs d-flex">
+        <li role="presentation" class="nav-item">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <li role="presentation" routerLink="/main-list" class="nav-item">
+          <a class="nav-link" href="/main-list">Todo's</a>
+        </li>
+        <!-- Use ml-auto on the logout list item to push it to the right -->
+        <li role="presentation" class="ml-auto">
+          <a href="#" class="nav-link">Log out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

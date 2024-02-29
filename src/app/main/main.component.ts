@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { DateService } from './Services/date.service';
-import { HandleItems } from './Services/handleItems.service';
-import { Item } from './Model/items.model';
-import { DatabaseService } from './Services/database.service';
+import { DateService } from '../Services/date.service';
+import { HandleItems } from '../Services/handleItems.service';
+import { Item } from '../Model/items.model';
+import { DatabaseService } from '../Services/database.service';
 
 @Component({
   selector: 'app-main',

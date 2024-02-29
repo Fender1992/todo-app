@@ -1,7 +1,8 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
+    <h2>Sign up to Join our Community</h2>
     <div class="col-12 col-md-8 col-lg-6">
-      <form (ngSubmit)="onLogin($event)" class="needs-validation" novalidate>
+      <form (ngSubmit)="onLogin(f)" class="needs-validation" #f="ngForm">
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
           <input

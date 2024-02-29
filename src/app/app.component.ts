@@ -11,6 +11,7 @@ import { DatabaseService } from './Services/database.service';
   providers: [],
 })
 export class AppComponent {
+  isLoggedIn = false;
   // currentDate: any;
   // todoItems: Item[] = [];
   // taskInput: string = '';

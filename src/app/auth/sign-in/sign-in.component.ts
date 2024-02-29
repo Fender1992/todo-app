@@ -13,6 +13,8 @@ export class SignInComponent implements OnInit {
   constructor(private router: Router) {}
 
   onLogin(form: NgForm) {
+    // const email = form.value.email;
+    // const password = form.value.password;
     this.router.navigate(['/main-list']);
   }
 }
