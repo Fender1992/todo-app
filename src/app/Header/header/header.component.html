@@ -1,15 +1,18 @@
-<!-- <div class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a href="#" class="navbar-brand">Today's Todo</a>
-      <span class="navbar-brand" style="padding-left: 150px"
-        >{{ currentDate }}
-      </span>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <ul class="nav nav-tabs d-flex">
+        <li role="presentation" class="nav-item">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <li role="presentation" routerLink="/main-list" class="nav-item">
+          <a class="nav-link" href="/main-list">Todo's</a>
+        </li>
+        <!-- Use ml-auto on the logout list item to push it to the right -->
+        <li role="presentation" class="ml-auto">
+          <a class="cursor: pointer">Log out</a>
+        </li>
+      </ul>
     </div>
   </div>
-  <div class="nav navbar navbar-center" style="padding-left: 200px">
-    <span> Enter a task </span>
-    <input type="text" placeholder="Clean Kitchen" [(ngModel)]="taskInput" />
-    <button class="btn btn-primary" (click)="onAddTask()">Add Task</button>
-  </div>
-</div> -->
+</div>

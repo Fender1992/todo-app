@@ -26,7 +26,6 @@ export class SignInComponent implements OnInit {
     if (!form.valid) {
       return;
     } else {
-      // this.router.navigate(['/main-list']);
     }
     const email = form.value.email;
     const password = form.value.password;
@@ -45,6 +44,7 @@ export class SignInComponent implements OnInit {
       (resData) => {
         console.log(resData);
         this.isLoading = false;
+        this.router.navigate(['/main-list']);
       },
       (errMessage) => {
         this.error = errMessage;
