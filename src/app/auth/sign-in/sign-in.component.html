@@ -1,10 +1,9 @@
 <div class="container mt-5">
   <div class="row justify-content-center align-items-center">
-    <!-- Sign Up Form Container -->
     <div class="col-12 col-lg-6 mb-4 mb-lg-0">
       <div class="p-3 border rounded">
-        <h2>Sign up to Join our Community</h2>
-        <form (ngSubmit)="onLogin(f)" class="needs-validation" #f="ngForm">
+        <h2>📝Sign up to Join our Community!</h2>
+        <form class="form-group" #f="ngForm" (ngSubmit)="onLogin(f)">
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input
@@ -13,11 +12,10 @@
               id="email"
               placeholder="Enter your email"
               name="email"
+              email
               ngModel
               required
             />
-            <!-- Optional: invalid feedback message -->
-            <!-- <div class="invalid-feedback">Please enter a valid email.</div> -->
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
@@ -29,18 +27,27 @@
               name="password"
               ngModel
               required
+              minlength="6"
             />
-            <!-- Optional: invalid feedback message -->
-            <!-- <div class="invalid-feedback">Please enter your password.</div> -->
           </div>
-          <button type="submit" class="btn btn-primary">Sign In</button>
+          <div>
+            <button type="submit" class="btn btn-primary" [disabled]="!f.valid">
+              {{ isLoginMode ? "Login" : "Sign Up" }}
+            </button>
+            |
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="onSwitchMode()"
+            >
+              Switch to {{ isLoginMode ? "Sign Up" : "Login" }}
+            </button>
+          </div>
         </form>
       </div>
     </div>
 
-    <!-- Images Container -->
     <div class="col-12 col-lg-6">
-      <!-- Image placeholders - replace with actual image paths -->
       <img
         src="https://source.unsplash.com/random/400x300?chores"
         alt="People doing chores"

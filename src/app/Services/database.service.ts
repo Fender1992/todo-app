@@ -3,11 +3,12 @@ import { Injectable, Input } from '@angular/core';
 import { Item } from '../Model/items.model';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class DatabaseService {
   @Input() todoItems: Item[] = [];
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   postTasks(task: Item): Observable<{ name: string }> {
     return this.http.post<{ name: string }>(
