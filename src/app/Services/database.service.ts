@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, Input } from '@angular/core';
 import { Item } from '../Model/items.model';
 import { map } from 'rxjs/operators';

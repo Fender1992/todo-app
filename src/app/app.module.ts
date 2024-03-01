@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Header/header/header.component';
@@ -11,6 +11,10 @@ import { FormsModule } from '@angular/forms';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { RouterModule, Routes } from '@angular/router';
 import { LoadingSpinner } from 'src/shared/loading-spinner/loading-spinner.component';
+import { AuthInterceptorService } from './Services/auth-interceptor.service';
+import { DatabaseService } from './Services/database.service';
+import { AuthService } from './Services/auth.service';
+import { DateService } from './Services/date.service';
 
 const appRoutes: Routes = [
   { path: '', component: SignInComponent },
@@ -33,7 +37,16 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [],
+  providers: [
+    DatabaseService,
+    AuthService,
+    DateService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

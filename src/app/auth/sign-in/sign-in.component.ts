@@ -42,7 +42,6 @@ export class SignInComponent implements OnInit {
 
     authObs.subscribe(
       (resData) => {
-        console.log(resData);
         this.isLoading = false;
         this.router.navigate(['/main-list']);
       },
