@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { errorObject } from 'rxjs/internal-compatibility';
-import { AuthService } from 'src/app/Services/auth.service';
+import { AuthData, AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,7 +12,8 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class SignInComponent implements OnInit {
   isLoginMode = true;
-  error: string = 'An error occured';
+  isLoading = false;
+  error: string = '';
   ngOnInit() {}
 
   constructor(private router: Router, private authService: AuthService) {}
@@ -24,27 +26,32 @@ export class SignInComponent implements OnInit {
     if (!form.valid) {
       return;
     } else {
-      this.router.navigate(['/main-list']);
+      // this.router.navigate(['/main-list']);
     }
     const email = form.value.email;
     const password = form.value.password;
 
+    let authObs: Observable<AuthData>;
+
+    this.isLoading = true;
+
     if (this.isLoginMode) {
-      //...
+      authObs = this.authService.login(email, password);
     } else {
-      this.authService.signUp(email, password).subscribe(
-        (resData) => {
-          console.log(resData);
-        },
-        (errorRes) => {
-          console.log(errorRes);
-          switch (errorRes.error.error.message) {
-            case 'EMAIL_EXISTS':
-              this.error = 'this email exists already';
-          }
-        }
-      );
+      authObs = this.authService.signUp(email, password);
     }
+
+    authObs.subscribe(
+      (resData) => {
+        console.log(resData);
+        this.isLoading = false;
+      },
+      (errMessage) => {
+        this.error = errMessage;
+        console.log(this.error);
+        this.isLoading = false;
+      }
+    );
 
     form.reset();
   }

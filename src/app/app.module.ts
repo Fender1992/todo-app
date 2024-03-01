@@ -10,6 +10,7 @@ import { MainComponent } from './main/main.component';
 import { FormsModule } from '@angular/forms';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { RouterModule, Routes } from '@angular/router';
+import { LoadingSpinner } from 'src/shared/loading-spinner/loading-spinner.component';
 
 const appRoutes: Routes = [
   { path: '', component: SignInComponent },
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
     HandleTodoItemComponent,
     SignInComponent,
     MainComponent,
+    LoadingSpinner,
   ],
   imports: [
     BrowserModule,
