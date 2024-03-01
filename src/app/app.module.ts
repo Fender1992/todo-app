@@ -38,14 +38,14 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
   ],
   providers: [
-    DatabaseService,
-    AuthService,
-    DateService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true,
     },
+    DatabaseService,
+    AuthService,
+    DateService,
   ],
   bootstrap: [AppComponent],
 })
