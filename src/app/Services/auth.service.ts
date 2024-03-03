@@ -15,7 +15,7 @@ export interface AuthData {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  user = new BehaviorSubject<User>(null);
+  user = new BehaviorSubject<User>(new User('', '', '', new Date()));
 
   constructor(private http: HttpClient) {}
   signUp(email: string, password: string) {
