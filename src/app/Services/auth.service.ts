@@ -18,6 +18,7 @@ export interface AuthData {
 export class AuthService {
   user = new BehaviorSubject<User>(new User('', '', '', new Date()));
   private tokenExprTimer: any;
+  authToken: string = '';
 
   constructor(private http: HttpClient, private router: Router) {}
   signUp(email: string, password: string) {
@@ -73,7 +74,6 @@ export class AuthService {
         _token: string;
         _tokenExpirationDate: string;
       } = JSON.parse(userDataString);
-
       const loadUser = new User(
         userData._token,
         userData._tokenExpirationDate,
@@ -88,6 +88,8 @@ export class AuthService {
           new Date().getTime();
         this.autoLogout(expDuration);
       }
+      console.log(userData._token);
+      this.authToken = userData._token;
     }
   }
 

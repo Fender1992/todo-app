@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, Input } from '@angular/core';
 import { Item } from '../Model/items.model';
 import { map } from 'rxjs/operators';
@@ -19,9 +19,16 @@ export class DatabaseService {
   }
 
   getTasks(): Observable<Item[]> {
+    // console.log(this.authService.authToken);
+    const headers = new HttpHeaders({
+      'auth-token': this.authService.authToken,
+    });
     return this.http
       .get<{ [key: string]: Item }>(
-        'https://todo-app-30b79-default-rtdb.firebaseio.com/tasks.json'
+        'https://todo-app-30b79-default-rtdb.firebaseio.com/tasks.json',
+        {
+          headers,
+        }
       )
       .pipe(
         map((responseData) => {

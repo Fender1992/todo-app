@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DateService } from '../Services/date.service';
 import { HandleItems } from '../Services/handleItems.service';
 import { Item } from '../Model/items.model';
@@ -10,7 +10,7 @@ import { DatabaseService } from '../Services/database.service';
   styleUrls: ['./main.component.css'],
   providers: [DateService, HandleItems, DatabaseService],
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
   currentDate: any;
   todoItems: Item[] = [];
   taskInput: string = '';
