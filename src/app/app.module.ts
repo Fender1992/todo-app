@@ -18,7 +18,7 @@ import { DateService } from './Services/date.service';
 import { AuthGuard } from './auth/sign-in/auth.guard';
 
 const appRoutes: Routes = [
-  { path: 'auth', component: SignInComponent },
+  { path: '', component: SignInComponent },
   { path: 'main-list', component: MainComponent },
   // { canActivate: [AuthGuard] },
 ];
