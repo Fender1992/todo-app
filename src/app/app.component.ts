@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DateService } from './Services/date.service';
 import { HandleItems } from './Services/handleItems.service';
 import { Item } from './Model/items.model';
 import { DatabaseService } from './Services/database.service';
+import { AuthService } from './Services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { DatabaseService } from './Services/database.service';
   styleUrls: ['./app.component.css'],
   providers: [],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   isLoggedIn = false;
   // currentDate: any;
   // todoItems: Item[] = [];
@@ -57,4 +58,8 @@ export class AppComponent {
   // tasksRemaining(): boolean {
   //   return this.todoItems.some((task) => !task.completed);
   // }
+  constructor(private authService: AuthService) {}
+  ngOnInit() {
+    this.authService.autoLogin();
+  }
 }

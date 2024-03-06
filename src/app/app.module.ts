@@ -15,10 +15,12 @@ import { AuthInterceptorService } from './Services/auth-interceptor.service';
 import { DatabaseService } from './Services/database.service';
 import { AuthService } from './Services/auth.service';
 import { DateService } from './Services/date.service';
+import { AuthGuard } from './auth/sign-in/auth.guard';
 
 const appRoutes: Routes = [
-  { path: '', component: SignInComponent },
+  { path: 'auth', component: SignInComponent },
   { path: 'main-list', component: MainComponent },
+  // { canActivate: [AuthGuard] },
 ];
 
 @NgModule({

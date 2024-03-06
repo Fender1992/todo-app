@@ -15,7 +15,7 @@
         </li>
         <!-- Use ml-auto on the logout list item to push it to the right -->
         <li role="presentation" class="ml-auto" *ngIf="isAuthenticated">
-          <a class="cursor: pointer">Log out</a>
+          <a class="cursor: pointer" (click)="onLogout()">Log out</a>
         </li>
       </ul>
     </div>

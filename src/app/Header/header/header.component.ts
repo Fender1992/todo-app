@@ -43,4 +43,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.taskAdded.emit(new Item(this.taskInput, false, Date()));
     this.taskInput = '';
   }
+  onLogout() {
+    this.authService.logout();
+  }
 }
