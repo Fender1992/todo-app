@@ -30,6 +30,7 @@ export class SignInComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
 
+    // define observables with $.  i.e. authObs$ or auth$.
     let authObs: Observable<AuthData>;
 
     this.isLoading = true;

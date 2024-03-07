@@ -42,6 +42,7 @@ export class MainComponent implements OnInit {
     // console.log(this.todoItems);
     this.taskInput = '';
   }
+  
   onDeleteTask(firebaseKey: string) {
     this.databaseService.deleteTasks(firebaseKey!).subscribe(() => {
       this.todoItems = this.todoItems.filter(

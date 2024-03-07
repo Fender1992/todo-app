@@ -58,8 +58,8 @@ export class AuthService {
         tap((resData) => {
           this.handleAuth(
             resData.email,
-            resData.localId,
             resData.idToken,
+            resData.localId,
             +resData.expiresIn
           );
         })
@@ -74,10 +74,11 @@ export class AuthService {
         _token: string;
         _tokenExpirationDate: string;
       } = JSON.parse(userDataString);
+
       const loadUser = new User(
-        userData._token,
-        userData._tokenExpirationDate,
+        userData.email,
         userData.id,
+        userData._token,
         new Date(userData._tokenExpirationDate)
       );
 
