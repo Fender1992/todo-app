@@ -38,7 +38,7 @@ export class MainComponent implements OnInit {
       newItem.firebaseKey = response.name;
       this.todoItems.push(newItem);
     });
-    // this.databaseService.postTasks(newItem);
+    this.databaseService.postTasks(newItem);
     // console.log(this.todoItems);
     this.taskInput = '';
   }

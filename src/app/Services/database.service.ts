@@ -15,7 +15,6 @@ export class DatabaseService {
       'https://todo-app-30b79-default-rtdb.firebaseio.com/tasks.json',
       task
     );
-    // console.log(task);
   }
 
   getTasks(): Observable<Item[]> {

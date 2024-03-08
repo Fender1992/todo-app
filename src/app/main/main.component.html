@@ -10,9 +10,11 @@
         type="text"
         id="taskInput"
         placeholder="e.g., Clean Kitchen"
-        (ngModel)="(taskInput)"
+        [(ngModel)]="taskInput"
       />
-      <button class="btn-add-task" (click)="onAddTask()">+</button>
+      <div id="submit" class="btn btn-primary" (click)="onAddTask()">Add</div>
+
+      <!-- <button class="btn-add-task" (click)="onAddTask()">+</button> -->
     </div>
   </nav>
 
