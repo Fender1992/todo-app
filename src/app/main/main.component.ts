@@ -16,6 +16,7 @@ export class MainComponent implements OnInit {
   todoItems: Item[] = [];
   taskInput: string = '';
   completed: boolean = false;
+  UUID: string = '';
 
   constructor(
     private dateService: DateService,
@@ -32,14 +33,15 @@ export class MainComponent implements OnInit {
   }
 
   onAddTask() {
+    this.UUID = this.authService.authUUID;
     if (this.taskInput.trim() === '') {
       return;
     }
-    if (!this.authService.UUID) {
+    if (!this.authService.authUUID) {
       console.log('User not authenticated!');
       return;
     }
-    const newItem = new Item(this.taskInput, false, Date());
+    const newItem = new Item(this.taskInput, false, Date(), this.UUID);
     this.databaseService.postTasks(newItem).subscribe((response) => {
       newItem.firebaseKey = response.name;
       // console.log(response.name);

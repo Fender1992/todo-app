@@ -19,7 +19,7 @@ export class AuthService {
   user = new BehaviorSubject<User>(new User('', '', '', new Date()));
   private tokenExprTimer: any;
   authToken: string = '';
-  UUID = '';
+  authUUID = ''; //the user id used to partition the db. registered on task creation
 
   constructor(private http: HttpClient, private router: Router) {}
   signUp(email: string, password: string) {
@@ -63,7 +63,7 @@ export class AuthService {
             resData.idToken,
             +resData.expiresIn
           );
-          this.UUID = resData.localId;
+          this.authUUID = resData.localId;
           console.log(resData.localId);
         })
       );
