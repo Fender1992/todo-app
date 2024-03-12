@@ -34,7 +34,7 @@ export class DatabaseService {
     } else {
       // If the UUIDs do not match, do nothing or handle the case accordingly
       console.log('UUIDs do not match. Task not added.');
-      return EMPTY; // or throwError('UUIDs do not match.');
+      return EMPTY;
     }
   }
 
