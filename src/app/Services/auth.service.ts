@@ -19,6 +19,7 @@ export class AuthService {
   user = new BehaviorSubject<User>(new User('', '', '', new Date()));
   private tokenExprTimer: any;
   authToken: string = '';
+  UUID = '';
 
   constructor(private http: HttpClient, private router: Router) {}
   signUp(email: string, password: string) {
@@ -62,6 +63,8 @@ export class AuthService {
             resData.idToken,
             +resData.expiresIn
           );
+          this.UUID = resData.localId;
+          console.log(resData.localId);
         })
       );
   }

@@ -9,6 +9,7 @@ import { AuthService } from './auth.service';
 export class DatabaseService {
   @Input() todoItems: Item[] = [];
   constructor(private http: HttpClient, private authService: AuthService) {}
+  uid: string = '';
 
   postTasks(task: Item): Observable<{ name: string }> {
     return this.http.post<{ name: string }>(
