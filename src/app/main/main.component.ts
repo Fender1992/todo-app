@@ -37,10 +37,10 @@ export class MainComponent implements OnInit {
     if (this.taskInput.trim() === '') {
       return;
     }
-    if (!this.authService.authUUID) {
-      console.log('User not authenticated!');
-      return;
-    }
+    // if (!this.authService.authUUID) {
+    //   console.log('User not authenticated!');
+    //   return;
+    // }
     const newItem = new Item(this.taskInput, false, Date(), this.UUID);
     this.databaseService.postTasks(newItem).subscribe((response) => {
       newItem.firebaseKey = response.name;
