@@ -4,8 +4,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Header/header/header.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
-import { MainComponent } from './main/main.component';
+import { TodoListComponent } from './Todo-list/todo-list.component';
+import { MainComponent } from './Main/main.component';
 import { FormsModule } from '@angular/forms';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -16,10 +16,12 @@ import { AuthService } from './Services/auth.service';
 import { DateService } from './Services/date.service';
 import { AuthGuard } from './auth/sign-in/auth.guard';
 import { AlertComponent } from './alert/alert.component';
+import { CompletedComponent } from './Completed/completed.component';
 
 const appRoutes: Routes = [
   { path: '', component: SignInComponent },
   { path: 'main-list', component: MainComponent },
+  { path: 'completed', component: CompletedComponent },
   // { canActivate: [AuthGuard] },
 ];
 
@@ -32,6 +34,7 @@ const appRoutes: Routes = [
     MainComponent,
     LoadingSpinner,
     AlertComponent,
+    CompletedComponent,
   ],
   imports: [
     BrowserModule,

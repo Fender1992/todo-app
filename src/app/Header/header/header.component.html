@@ -17,6 +17,9 @@
         <li role="presentation" class="ml-auto" *ngIf="isAuthenticated">
           <a class="cursor: pointer" (click)="onLogout()">Log out</a>
         </li>
+        <li role="presentation" class="ml-auto" *ngIf="isAuthenticated">
+          <a class="cursor: pointer" (click)="onCompleted()">Completed</a>
+        </li>
       </ul>
     </div>
   </div>
