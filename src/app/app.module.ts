@@ -21,7 +21,11 @@ import { CompletedComponent } from './Completed/completed.component';
 const appRoutes: Routes = [
   { path: '', component: SignInComponent },
   { path: 'main-list', component: MainComponent },
-  { path: 'completed', component: CompletedComponent },
+  {
+    path: 'completed',
+    component: CompletedComponent,
+    canActivate: [AuthGuard],
+  },
   // { canActivate: [AuthGuard] },
 ];
 

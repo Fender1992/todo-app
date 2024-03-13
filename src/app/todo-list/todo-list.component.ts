@@ -12,9 +12,9 @@ import { DateService } from '../Services/date.service';
 })
 export class TodoListComponent implements OnInit {
   @Input('todo-component-list') todoItems: Item[] = [];
-  @Input('task-completed') completed: boolean = false;
+  @Input() completed: boolean = false;
   @Output() deleteTask = new EventEmitter<string>();
-  @Input() completedTask: string[] = [];
+  @Input('task-completed') completedTask: string[] = [];
   currentDate: any;
 
   constructor(
