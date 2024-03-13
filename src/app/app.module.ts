@@ -15,6 +15,7 @@ import { DatabaseService } from './Services/database.service';
 import { AuthService } from './Services/auth.service';
 import { DateService } from './Services/date.service';
 import { AuthGuard } from './auth/sign-in/auth.guard';
+import { AlertComponent } from './alert/alert.component';
 
 const appRoutes: Routes = [
   { path: '', component: SignInComponent },
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     SignInComponent,
     MainComponent,
     LoadingSpinner,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,

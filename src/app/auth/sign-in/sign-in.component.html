@@ -1,9 +1,15 @@
 <div class="container mt-5">
   <div class="row justify-content-center align-items-center">
     <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+      <app-alert
+        [message]="error"
+        *ngIf="error"
+        (close)="onHandleError()"
+      ></app-alert>
+
       <div class="p-3 border rounded">
         <h2>📝Sign up to Join our Community!</h2>
-        <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+        <!-- <div class="alert alert-danger" *ngIf="error">{{ error }}</div> -->
         <div *ngIf="isLoading" style="text-align: center">
           <app-loading-spinner></app-loading-spinner>
         </div>
