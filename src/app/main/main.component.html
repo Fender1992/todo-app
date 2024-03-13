@@ -11,6 +11,8 @@
         id="taskInput"
         placeholder="e.g., Clean Kitchen"
         [(ngModel)]="taskInput"
+        (keydown.enter)="onAddTask()"
+        #taskInputRef
       />
       <div id="submit" class="btn btn-primary" (click)="onAddTask()">Add</div>
 

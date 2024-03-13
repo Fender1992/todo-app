@@ -2,10 +2,12 @@
   <li class="list-group-item" *ngFor="let i of todoItems">
     <label class="checkbox-label">
       <input
+        #input
         type="checkbox"
         [(ngModel)]="i.completed"
         (change)="onDeleteTask(i.firebaseKey!)"
       />
+
       <span [ngClass]="{ 'completed-task': i.completed }"></span>
       {{ i.task.toUpperCase() }}
     </label>

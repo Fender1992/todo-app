@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DateService } from '../Services/date.service';
 import { HandleItems } from '../Services/handleItems.service';
 import { Item } from '../Model/items.model';
@@ -17,6 +17,7 @@ export class MainComponent implements OnInit {
   taskInput: string = '';
   completed: boolean = false;
   UUID: string = '';
+  @ViewChild('taskInputRef') taskInputRef!: ElementRef;
 
   constructor(
     private dateService: DateService,
@@ -29,6 +30,7 @@ export class MainComponent implements OnInit {
     this.todoItems = this.handleItems.item;
     this.databaseService.getTasks().subscribe((tasks: Item[]) => {
       this.todoItems = tasks;
+      setTimeout(() => this.taskInputRef.nativeElement.focus(), 0);
     });
   }
 

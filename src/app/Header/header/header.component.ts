@@ -6,6 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Item } from 'src/app/Model/items.model';
 import { AuthService } from 'src/app/Services/auth.service';
@@ -24,11 +25,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   currentDate: any;
   @Output() taskAdded = new EventEmitter<Item>();
   taskInput: string = '';
+  completed: boolean = false;
 
   constructor(
     private dateService: DateService,
     // private handleItems: HandleItems,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
   ngOnInit() {
     this.userSub = this.authService.user.subscribe((user) => {
@@ -46,5 +49,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   // }
   onLogout() {
     this.authService.logout();
+  }
+  onCompleted() {
+    this.router.navigate(['/completed']);
   }
 }
