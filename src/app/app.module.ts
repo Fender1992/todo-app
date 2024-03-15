@@ -8,22 +8,14 @@ import { TodoListComponent } from './Todo-list/todo-list.component';
 import { MainComponent } from './Main/main.component';
 import { FormsModule } from '@angular/forms';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
-import { RouterModule, Routes } from '@angular/router';
 import { LoadingSpinner } from 'src/shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './Services/auth-interceptor.service';
 import { DatabaseService } from './Services/database.service';
 import { AuthService } from './Services/auth.service';
 import { DateService } from './Services/date.service';
-import { AuthGuard } from './auth/sign-in/auth.guard';
 import { AlertComponent } from './alert/alert.component';
 import { CompletedComponent } from './Completed/completed.component';
-
-const appRoutes: Routes = [
-  { path: '', component: SignInComponent },
-  { path: 'main-list', component: MainComponent },
-  { path: 'completed', component: CompletedComponent },
-  // { canActivate: [AuthGuard] },
-];
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -36,12 +28,7 @@ const appRoutes: Routes = [
     AlertComponent,
     CompletedComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    RouterModule.forRoot(appRoutes),
-  ],
+  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
