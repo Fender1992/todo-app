@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { HandleItems } from '../Services/handleItems.service';
-import { Item } from '../Model/items.model';
-import { DatabaseService } from '../Services/database.service';
-import { DateService } from '../Services/date.service';
+import { HandleItems } from '../services/handleItems.service';
+import { Item } from '../model/items.model';
+import { DatabaseService } from '../services/database.service';
+import { DateService } from '../services/date.service';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-todo-list',
@@ -20,7 +21,8 @@ export class TodoListComponent implements OnInit {
   constructor(
     private handleItems: HandleItems,
     private databaseService: DatabaseService,
-    private dateService: DateService
+    private dateService: DateService,
+    private store: Store
   ) {}
 
   ngOnInit() {

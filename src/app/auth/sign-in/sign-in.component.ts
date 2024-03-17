@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { errorObject } from 'rxjs/internal-compatibility';
-import { AuthData, AuthService } from 'src/app/Services/auth.service';
+import { AuthData, AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sign-in',

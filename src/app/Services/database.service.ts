@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, Input } from '@angular/core';
-import { Item } from '../Model/items.model';
+import { Item } from '../model/items.model';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';

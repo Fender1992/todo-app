@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DateService } from './Services/date.service';
-import { HandleItems } from './Services/handleItems.service';
-import { Item } from './Model/items.model';
-import { DatabaseService } from './Services/database.service';
-import { AuthService } from './Services/auth.service';
+import { DateService } from './services/date.service';
+import { HandleItems } from './services/handleItems.service';
+import { Item } from './model/items.model';
+import { DatabaseService } from './services/database.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',

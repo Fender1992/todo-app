@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Item } from '../Model/items.model';
+import { Item } from '../model/items.model';
 
 @Component({
   selector: 'app-completed',

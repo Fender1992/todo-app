@@ -8,10 +8,10 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Item } from 'src/app/Model/items.model';
-import { AuthService } from 'src/app/Services/auth.service';
-import { DateService } from 'src/app/Services/date.service';
-import { HandleItems } from 'src/app/Services/handleItems.service';
+import { Item } from 'src/app/model/items.model';
+import { AuthService } from 'src/app/services/auth.service';
+import { DateService } from 'src/app/services/date.service';
+import { HandleItems } from 'src/app/services/handleItems.service';
 
 @Component({
   selector: 'app-header',
