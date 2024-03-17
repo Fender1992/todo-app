@@ -64,7 +64,7 @@ export class AuthService {
             +resData.expiresIn
           );
           this.authUUID = resData.localId;
-          console.log(resData.localId);
+          // console.log(resData.localId);
         })
       );
   }

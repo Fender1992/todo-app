@@ -1,6 +1,10 @@
 <h2>Completed Tasks</h2>
 <ul class="list-group list-group-light">
-  <li class="list-group-item" *ngFor="let item of completedTask">
-    <app-todo-list [completedTask]="completedTask"></app-todo-list>
+  <li class="list-group-item">
+    <app-todo-list
+      *ngFor="let item of completedList"
+      [todo-component-list]="completedList"
+      (completedTask)="onTaskCompleted(item)"
+    ></app-todo-list>
   </li>
 </ul>

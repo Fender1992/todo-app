@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from '../Model/items.model';
 
 @Component({
   selector: 'app-completed',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompletedComponent implements OnInit {
   completed: boolean = true;
-  completedTask: [] = [];
+  completedList: Item[] = [];
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.completedList);
+  }
+
+  onTaskCompleted(item: Item) {
+    this.completedList.push(item);
+  }
 }

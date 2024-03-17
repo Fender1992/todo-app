@@ -14,7 +14,7 @@ export class TodoListComponent implements OnInit {
   @Input('todo-component-list') todoItems: Item[] = [];
   @Input('task-completed') completed: boolean = false;
   @Output() deleteTask = new EventEmitter<string>();
-  @Input() completedTask: string[] = [];
+  @Output() completedTask = new EventEmitter<Item>();
   currentDate: any;
 
   constructor(
@@ -31,8 +31,10 @@ export class TodoListComponent implements OnInit {
     });
   }
 
-  @Input() onDeleteTask(firebaseKey: string) {
-    this.deleteTask.emit(firebaseKey);
+  @Input() onDeleteTask(item: Item) {
+    this.deleteTask.emit(item.firebaseKey);
+    this.completedTask.emit(item);
     // this.completedTask.push(item.task);
+    console.log(this.completedTask);
   }
 }

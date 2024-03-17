@@ -5,7 +5,7 @@
         #input
         type="checkbox"
         [(ngModel)]="i.completed"
-        (change)="onDeleteTask(i.firebaseKey!)"
+        (change)="onDeleteTask(i)"
       />
 
       <span [ngClass]="{ 'completed-task': i.completed }"></span>

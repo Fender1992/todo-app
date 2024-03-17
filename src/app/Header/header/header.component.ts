@@ -35,13 +35,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {}
   ngOnInit() {
     this.userSub = this.authService.user.subscribe((user) => {
-      this.isAuthenticated = !!user;
+      this.isAuthenticated = !!user && !!user.token;
     });
     this.currentDate = this.dateService.date;
   }
 
   ngOnDestroy() {
-    this.userSub.unsubscribe();
+    if (this.userSub) {
+      this.userSub.unsubscribe();
+    }
   }
   // onAddTask() {
   //   this.taskAdded.emit(new Item(this.taskInput, false, Date()));
@@ -49,6 +51,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   // }
   onLogout() {
     this.authService.logout();
+    this.router.navigate(['']);
   }
   onCompleted() {
     this.router.navigate(['/completed']);
