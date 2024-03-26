@@ -5,11 +5,16 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { EMPTY } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 @Injectable({ providedIn: 'root' })
 export class DatabaseService {
   @Input() todoItems: Item[] = [];
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    private store: Store
+  ) {}
   dbUUID = this.authService.authUUID;
 
   // postTasks(task: Item): Observable<{ name: string }> {

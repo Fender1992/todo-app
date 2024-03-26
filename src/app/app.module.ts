@@ -18,6 +18,7 @@ import { AlertComponent } from './alert/alert.component';
 import { CompletedComponent } from './Completed/completed.component';
 import { AppRoutingModule } from './app-routing.module';
 import { taskReducer } from './store/tasks.reducer';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { taskReducer } from './store/tasks.reducer';
     StoreModule.forRoot({
       tasks: taskReducer,
     }),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     {

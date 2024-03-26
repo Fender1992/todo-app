@@ -4,6 +4,9 @@ import { HandleItems } from '../services/handleItems.service';
 import { Item } from '../model/items.model';
 import { DatabaseService } from '../services/database.service';
 import { AuthService } from '../services/auth.service';
+import { Store } from '@ngrx/store';
+import * as TaskActions from '../store/tasks.action';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -18,12 +21,14 @@ export class MainComponent implements OnInit {
   completed: boolean = false;
   UUID: string = '';
   @ViewChild('taskInputRef') taskInputRef!: ElementRef;
+  // tasks$: Observable<Item[]>;
 
   constructor(
     private dateService: DateService,
     private handleItems: HandleItems,
     private databaseService: DatabaseService,
-    private authService: AuthService
+    private authService: AuthService,
+    private store: Store
   ) {}
   ngOnInit() {
     this.currentDate = this.dateService.date;
@@ -32,6 +37,7 @@ export class MainComponent implements OnInit {
       this.todoItems = tasks;
       setTimeout(() => this.taskInputRef.nativeElement.focus(), 0);
     });
+    this.store.dispatch(TaskActions.loadTasks());
   }
 
   onAddTask() {
@@ -43,14 +49,28 @@ export class MainComponent implements OnInit {
     //   console.log('User not authenticated!');
     //   return;
     // }
+    // const newItem = new Item(this.taskInput, false, Date(), this.UUID);
+    // this.databaseService.postTasks(newItem).subscribe((response) => {
+    //   newItem.firebaseKey = response.name;
+    //   this.todoItems.push(newItem);
+    // });
+    // // this.databaseService.postTasks(newItem);
+    // this.store.dispatch(TaskActions.addTask({ task: newItem }));
+    // console.log(this.todoItems);
     const newItem = new Item(this.taskInput, false, Date(), this.UUID);
     this.databaseService.postTasks(newItem).subscribe((response) => {
-      newItem.firebaseKey = response.name;
-      // console.log(response.name);
-      this.todoItems.push(newItem);
+      // Create a new object with the updated firebaseKey
+      const newItemWithKey: Item = {
+        ...newItem, // Copy existing properties from newItem
+        firebaseKey: response.name, // Assign the firebaseKey from the response
+      };
+
+      this.todoItems.push(newItemWithKey);
+
+      // Dispatch the addTask action with the correct payload
+      this.store.dispatch(TaskActions.addTask({ task: newItemWithKey }));
+      console.log(newItemWithKey);
     });
-    this.databaseService.postTasks(newItem);
-    // console.log(this.todoItems);
     this.taskInput = '';
   }
   onDeleteTask(firebaseKey: string) {
