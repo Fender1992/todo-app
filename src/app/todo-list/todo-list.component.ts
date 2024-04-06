@@ -4,6 +4,7 @@ import { Item } from '../model/items.model';
 import { DatabaseService } from '../services/database.service';
 import { DateService } from '../services/date.service';
 import { Store } from '@ngrx/store';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -22,13 +23,14 @@ export class TodoListComponent implements OnInit {
     private handleItems: HandleItems,
     private databaseService: DatabaseService,
     private dateService: DateService,
-    private store: Store
+    private store: Store,
+    private auth: AuthService
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.currentDate = this.dateService.date;
     this.todoItems = this.handleItems.item;
-    this.databaseService.getTasks().subscribe((tasks: Item[]) => {
+    (await this.databaseService.getTasks()).subscribe((tasks: Item[]) => {
       this.todoItems = tasks;
     });
   }

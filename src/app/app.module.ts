@@ -40,6 +40,7 @@ import { EffectsModule } from '@ngrx/effects';
       tasks: taskReducer,
     }),
     EffectsModule.forRoot([]),
+    StoreModule.forRoot({}, {}),
   ],
   providers: [
     {

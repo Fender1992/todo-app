@@ -19,7 +19,7 @@ export class AuthService {
   user = new BehaviorSubject<User>(new User('', '', '', new Date()));
   private tokenExprTimer: any;
   authToken: string = '';
-  authUUID = ''; //the user id used to partition the db. registered on task creation
+  authUUID: string = '';
 
   constructor(private http: HttpClient, private router: Router) {}
   signUp(email: string, password: string) {
@@ -81,7 +81,6 @@ export class AuthService {
         userData.email,
         userData._token,
         userData.id,
-        // userData._tokenExpirationDate,
         new Date(userData._tokenExpirationDate)
       );
 
@@ -119,6 +118,9 @@ export class AuthService {
   ) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
+
+    this.authUUID = this.authToken;
+
     this.user.next(user);
     this.autoLogout(expiresIn * 1000);
     localStorage.setItem('userData', JSON.stringify(user));

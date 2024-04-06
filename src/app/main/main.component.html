@@ -26,7 +26,7 @@
       (deleteTask)="onDeleteTask($event)"
     ></app-todo-list>
   </main>
-  <div class="task-status-message" *ngIf="allTasksCompleted()">
+  <div class="task-status-message" *ngIf="todoItems.length < 1 && !isFetching">
     🎉 All tasks are completed! Great job!
   </div>
   <div class="task-status-message" *ngIf="tasksRemaining()">

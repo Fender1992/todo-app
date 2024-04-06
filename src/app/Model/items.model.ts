@@ -1,5 +1,4 @@
 export class Item {
-  id: number = Math.floor(Math.random() * 1000);
   task: string;
   completed: boolean;
   createdAt: Date = new Date();

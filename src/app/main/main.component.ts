@@ -15,6 +15,7 @@ import { Observable } from 'rxjs';
   providers: [DateService, HandleItems, DatabaseService],
 })
 export class MainComponent implements OnInit {
+  isFetching = false;
   currentDate: any;
   todoItems: Item[] = [];
   taskInput: string = '';
@@ -30,17 +31,18 @@ export class MainComponent implements OnInit {
     private authService: AuthService,
     private store: Store
   ) {}
-  ngOnInit() {
+  async ngOnInit() {
     this.currentDate = this.dateService.date;
     this.todoItems = this.handleItems.item;
-    this.databaseService.getTasks().subscribe((tasks: Item[]) => {
-      this.todoItems = tasks;
+    (await this.databaseService.getTasks()).subscribe((response: Item[]) => {
+      this.todoItems = response;
       setTimeout(() => this.taskInputRef.nativeElement.focus(), 0);
     });
     this.store.dispatch(TaskActions.loadTasks());
   }
 
-  onAddTask() {
+  async onAddTask() {
+    this.isFetching = true;
     this.UUID = this.authService.authUUID;
     if (this.taskInput.trim() === '') {
       return;
@@ -57,12 +59,11 @@ export class MainComponent implements OnInit {
     // // this.databaseService.postTasks(newItem);
     // this.store.dispatch(TaskActions.addTask({ task: newItem }));
     // console.log(this.todoItems);
-    const newItem = new Item(this.taskInput, false, Date(), this.UUID);
-    this.databaseService.postTasks(newItem).subscribe((response) => {
-      // Create a new object with the updated firebaseKey
+    const newItem = new Item(this.taskInput, false, Date());
+    (await this.databaseService.postTasks(newItem)).subscribe((response) => {
       const newItemWithKey: Item = {
-        ...newItem, // Copy existing properties from newItem
-        firebaseKey: response.name, // Assign the firebaseKey from the response
+        ...newItem,
+        firebaseKey: response.name,
       };
 
       this.todoItems.push(newItemWithKey);
@@ -70,15 +71,18 @@ export class MainComponent implements OnInit {
       // Dispatch the addTask action with the correct payload
       this.store.dispatch(TaskActions.addTask({ task: newItemWithKey }));
       console.log(newItemWithKey);
+      this.isFetching = false;
     });
     this.taskInput = '';
   }
   onDeleteTask(firebaseKey: string) {
+    this.isFetching = true;
     this.databaseService.deleteTasks(firebaseKey!).subscribe(() => {
       this.todoItems = this.todoItems.filter(
         (task) => task.firebaseKey !== firebaseKey
       );
     });
+    this.isFetching = false;
   }
 
   allTasksCompleted(): boolean {
