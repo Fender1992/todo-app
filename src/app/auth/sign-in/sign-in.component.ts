@@ -14,7 +14,34 @@ export class SignInComponent implements OnInit {
   isLoginMode = true;
   isLoading = false;
   error: string = '';
-  ngOnInit() {}
+  images = [
+    {
+      url: 'https://source.unsplash.com/random/400x300?chores',
+      alt: 'People doing chores',
+    },
+    {
+      url: 'https://source.unsplash.com/random/400x300?chores,work',
+      alt: 'More people doing chores',
+    },
+    {
+      url: 'https://source.unsplash.com/random/400x300?chores,work&sig=1',
+      alt: 'More people doing chores',
+    },
+    {
+      url: 'https://source.unsplash.com/random/400x300?chores,work&sig=2',
+      alt: 'More people doing chores',
+    },
+    {
+      url: 'https://source.unsplash.com/random/400x300?chores,work&sig=3',
+      alt: 'More people doing chores',
+    },
+  ];
+  activeImageIndex = 0;
+  ngOnInit() {
+    setInterval(() => {
+      this.activeImageIndex = (this.activeImageIndex + 1) % this.images.length;
+    }, 3000);
+  }
 
   constructor(private router: Router, private authService: AuthService) {}
 
