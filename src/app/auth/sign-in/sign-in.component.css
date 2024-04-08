@@ -84,7 +84,7 @@ button {
 }
 
 .btn-google {
-  background-color: #ffff;
+  background-color: rgb(226, 99, 99);
   color: #ffffff;
   display: flex; /* Align image within button */
   align-items: center;

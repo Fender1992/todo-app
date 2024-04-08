@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { errorObject } from 'rxjs/internal-compatibility';
 import { AuthData, AuthService } from 'src/app/services/auth.service';
+import { CredentialResponse, PromptMomentNotification } from 'google-one-tap';
 
 @Component({
   selector: 'app-sign-in',
@@ -37,6 +38,7 @@ export class SignInComponent implements OnInit {
     },
   ];
   activeImageIndex = 0;
+
   ngOnInit() {
     setInterval(() => {
       this.activeImageIndex = (this.activeImageIndex + 1) % this.images.length;

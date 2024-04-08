@@ -147,21 +147,24 @@
                 class="btn btn-primary"
                 [disabled]="!f.valid"
               >
-                Sign Up
+                {{ isLoginMode ? "Login" : "Sign Up" }}
               </button>
+              |
               <button
                 type="button"
-                class="btn btn-secondary"
+                class="btn btn-primary"
                 (click)="onSwitchMode()"
               >
-                Switch to Login
+                Switch to {{ isLoginMode ? "Sign Up" : "Login" }}
               </button>
+              |
               <button class="btn btn-google" name="google-icon">
                 <img
                   class="google-icon"
                   src="assets/images/google-icon.png"
                   alt="Sign in with Google"
                 />
+                Sign in with Google
               </button>
             </div>
           </form>
